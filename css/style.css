@@ -148,7 +148,20 @@ h6{font-size:12px}
 */
 /*code,pre{min-width:240px;max-width:320px;font-size:11px}}*/
 
-#forkme_banner{display:block;position:absolute;top:0;right:40px;z-index:10;padding:10px 50px 10px 10px;color:#fff;background:url("../images/blacktocat.png") #0090ff no-repeat 95% 50%;font-weight:700;box-shadow:0 0 10px rgba(0,0,0,0.5);border-bottom-left-radius:2px;border-bottom-right-radius:2px}
+#forkme_banner{
+    display:block;
+    position:absolute;
+    top:0;
+    right:40px;
+    z-index:10;
+    padding:10px 50px 10px 10px;
+    color:#fff;
+    background:url("../images/blacktocat.png") #0090ff no-repeat 95% 50%;
+    font-weight:700;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
+    border-bottom-left-radius:2px;
+    border-bottom-right-radius:2px
+}
 
 footer p{
     color:#f2f2f2;
@@ -178,6 +191,15 @@ a:hover,a:focus{
     color:#f2f2f2;
 }
 
+footer a{
+    color: #f2f2f2;
+}
+
+footer a:hover, footer a:focus{
+    text-decoration:underline;
+    color:#f2f2f2;
+}
+
 .info{
      color:#f2f2f2;
     background:#212121;
@@ -193,6 +215,9 @@ header, footer{
     background:linear-gradient(to top, #373737, #212121)
 }
 
+footer{
+    padding-bottom: 5px;
+}
 
 .content {
   max-width: 1500px;
@@ -214,7 +239,9 @@ canvas{
 /* Create two equal columns that floats next to each other */
 .column_left {
   float: left;
+    min-width: 100px;
   width: 20%;
+    max-width: 300px;
   padding: 10px;
 /*  height: 300px;  Should be removed. Only for demonstration */
 }
@@ -231,7 +258,15 @@ canvas{
   clear: both;
 }
 select {
-    padding-left: 15px;
-    width: 80%;
-    margin: auto;
+    padding-left: 5px;
+    width: 95%;
+/*    height: 78%;*/
+}
+.box {
+    width:100%;
+    margin: 5px;
+    border: 2px solid ;
+    border-color: #545454;
+    border-radius: 10px;
+    background-color: #f8f8f8;
 }

@@ -78,6 +78,11 @@ let config = {
                         radius: 0
                     }
                 },
+                legend: {
+                    labels: {
+                        fontSize: 16
+                    }
+                },
                 responsive: true,
                 tooltips: {
                     enabled: false
@@ -85,6 +90,9 @@ let config = {
                 scales: {
                     xAxes: [{
                         display: true,
+                        ticks:{
+                            maxTicksLimit: 30
+                        },
                         scaleLabel: {
                             display: true,
                             labelString: 'mass',
@@ -130,20 +138,16 @@ document.getElementById('addDataset').addEventListener('click', function() {
 
 document.getElementById('clear').addEventListener('click', function() {clearChart();});
 
-document.getElementById('download').addEventListener('click', function() {
+document.getElementById("saveData").addEventListener('click', function(){
+    var a =  document.getElementById("saveData");
     let exportData = {};
     for(const key in currentData){
         exportData[key] = {'elements' : currentData[key].elements,
                            'masses'   : currentData[key].masses,
                            'abundance': currentData[key].abundance}
     }
-    const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([JSON.stringify(exportData, null, 2)], {
                                     type: "text/plain" }));
-    a.setAttribute("download", "data.json");
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
 });
 
 document.getElementById('removeItem').addEventListener('click', function() {
@@ -232,7 +236,8 @@ function removeLine(name){
 
 function addLine(dist){
             if(dist === null) return;
-            if(config.data.datasets.length == 1 && config.data.datasets[0].label === 'Sample Data'){
+            if(config.data.datasets.length < 2){
+                console.log("here")
                 clearList();
                 currentData = {};
                 var newDataset = [{
@@ -283,6 +288,8 @@ function clearChart(){
                 data: sample.intensity,
                 fill: false
             }];
+            sample = formulaToDistribution('C16H10', 100);
+            sample.name = 'Sample Data';
             config.data.labels = sample.mass;
             window.myLine.update();
             clearList();

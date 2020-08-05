@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      
 <title>IsoTools | Isotopic distribution tools</title>
 <meta name="description" content="Isotopic distribution calculator/plotter" />
 
   </head>
 
-  <body>
+  <body style="background-color: #212121">
 
     <!-- HEADER -->
 <!--    <div >-->
@@ -30,19 +33,49 @@
 <!--    </div>-->
 
     <!-- MAIN CONTENT -->
-     <div id="main_content_wrap" class="content"> 
-
+     <div id="main_content_wrap" style="background-color: #f2f2f2"> 
+<div id="main_content_wrap"  class="content"> 
 <div class="row" style="width:100%;">
-  <div class="column_left" >
-                <input type="text" id="formula" name="formula"></br> 
-                 <input type="number" id="height" name="height", min="1", max="100"></br> 
-                 <button id="addDataset">Add Molecule</button></br> 
-                 <button id="clear">Clear</button></br> 
-    <h6 style="padding-top: 10px">Currently displaying:</h6>
-    <select id="currentData" multiple="multiple">
-    <option value='Sample'>Sample Data</option>
-    </select>
-    <button id="removeItem">Remove Selected</button>
+  <div class="column_left" style="min-width: 220px" >
+      <div class="box">
+        <div style="padding: 5px">
+            <div style="width: 50%; float:left; padding-right: 2px;">
+                Formula
+                <input type="text" id="formula" name="formula" style="width: 100%">
+            </div>
+            <div style="width: 50%; float:left; padding-left: 2px;">
+                Height
+                <input type="number" id="height" name="height", min="1", max="100" style="width: 100%">
+            </div>
+            <div style="margin-top: 15px">
+                <button id="addDataset" style="width: 48%; background-color: transparent; border: none; padding-top: 7px;">
+                    <img src="images/add.png" style="width: 100%">       
+                </button>
+                <button id="clear" style="width: 48%; background-color: transparent; border: none; padding-top: 7px;">
+                   <img src="images/clear.png" style="width: 100%"> 
+                </button>
+            </div>
+        </div>
+      </div>   
+      <div class="box" >
+          <div style="padding-left: 5px; padding-top: 5px">Currently displaying</div>
+          <select id="currentData" multiple="multiple" style="margin: 5px">
+              <option value='Sample'>Sample Data</option>
+          </select>
+          <button id="removeItem" style="background-color: transparent; border: none; padding-bottom: 5px ">
+              <img src="images/remove.png" style="width: 100%;"> 
+          </button>
+      </div> 
+      <div class="box">
+          <div style="padding-left: 5px; padding-top: 10px; float: left;">
+               Download: 
+          </div>
+        <div style=" padding-top: 5px;">
+         <a id="saveData" download="IsotopicDistribution.json" href="" style=" text-align: right;"><img src="images/json.png" style="width: 21%; background-color: transparent; border: none; padding: 4px;"></a>
+         <a id="saveImage" download="IsotopicDistribution.jpg" href="" style=" text-align: right;"><img src="images/jpg.png" style="width: 21%; background-color: transparent; border: none; padding: 4px;"></a>
+            </div>
+      </div>
+     
 
   </div>
   <div class="column_right" >
@@ -51,27 +84,56 @@
     </div>
   </div>
 </div>
-<div style="text-align: right">
-    <button id="download">Download</button>
-                 <a id="saveImage" download="IsotopicDistribution.jpg" href="">Download</a>
-   
 </div>
 </div>
-<div class="info">
-     <div class="content">
-<h2>Instructions</h2>
-    <p>Blaksdkfjfdkhfdgkijh</p>
-
+<div class="info" style="height: 100%">
+     <div class="content" style="padding-top: 15px; padding-left: 10px">
+         <h2>Overview</h2>
+         <p>This program can calculate the isotopic distribution of chemical species. It can also calculate and plot the resulting isotopic pattern of complex chemical mixture containing multiple compounds in different proportions. This feature can be used while interpetting mass spectrometric data.</p>
+        
+         <h2>Instructions</h2>
+         <p>To plot the isotopic distribution of a molecule/atom introduce it's chemical formula and press the <b>Add</b> button. You also have the option of changing the heigh of the resulting spectrum (default value: 100). The plot can be cleared by pressing the <b>Clear</b> button.</p>
+         
+        <p>Example Chemical formulas:</p>
+         <ul style="list-style: none">
+            <li>\(C\)</li>
+            <li>\(Al\,2O\,3\)</li>
+            <li>\(PbCl\,2\)</li>
+            <li>\(C\,60\)</li>
+         </ul>
+        
+         <p>You can add as many chemical species as you want, while changing the height property for each one, and thus changing the amount of each compound in the mmixture. The <i>Cumulative</i> line on the plot shows the isotopic distribution of the complex mixtrue. Any compound can be removed from the mixture by first selecting it in the list of displayed species and then pressing the <b>Remove selected</b> button.</p>
+         
+         <figure style="text-align: center;">
+            <img src="images/screenshot.png" alt="Example spectrum" style="width:70%; ">
+            <figcaption>Example of isotopic distribution for a 1:1 mixture of \(C18H12\) and \(C19\).</figcaption>
+        </figure>
+        <p>The obtained isotopic distribution can be exported as either an image or a text file.</p>
+         
+         <h1>Theory</h1>
+         <p>Most elements occur in nature as a mixture of isotopes. Isotopes are atom species of the same chemical element that have different masses. They have the same number of protons and electrons, but a different number of neutrons. For instance, \(C\) has three isotopes: \(^{12}C\) (mass: 12.(exact) Da, abundance: 98.93(8)%), \(^{13}C\) (mass: 13.003355 Da, abundance: 1.07(8)%), and \(^{14}C\) (mass: 14.003241 Da, abundance: 1ppt). The presence of multiple isotopes for the elemnts of a larger molecule gives rise to a complex and unique isotopic distribution that can be used to identify the molecule. Moreover, since the abundance of isotopes in spce is slightly different, the isotopic distribution can be used to identify chemical species that have an extraterestrial origin.</p>
+         <p>The program is based on the binomial theorem for the calculation of the isotopic distributions. The isotopic distribution for a given molecule is described by the following product of polynomials: </p>
+         \[(a_1+a_2+a_3+...)^m(b_1+b_2+b_3+...)^n(c_1+c_2+c_3+...)^o...\]
+         
+         <p>where \(a_1\), \(a_3\), \(a_3\), etc., \(b_1\), \(b_3\), \(b_3\), etc., and \(c_1\), \(c_3\), \(c_3\), etc., represent the individual isotopes of the elements, and the exponents <i>m</i>, <i>n</i>, <i>o</i>, etc. are the number of atoms of each element present in the molecule. The terms which result from the expansion of each polynomial can be used to describe the isotopic contributions, exact masses, and absolute abundances. The absolute abundances for each term can be derived with the following combinational equation</p>
+         \[A = \frac{n!}{(a)!(b)!(c)!...} (r_1)^a(r_2)^b(r_3)^c...\]
+         
+         <p>where <i>n</i> is the number of atoms of the element, \(r_1\), \(r_2\), \(r_3\), etc., are the abundances of each isotope and <i>a</i>, <i>b</i>, <i>c</i>, etc., are the number distribution of the atoms in a given permutation. For example, the abundance of the \(^{12}C_{57}\)\(^{13}C_{2}\)\(^{14}C_{1}\) term in the \((^{12}C+\)\(^{13}C+\)\(^{14}C)\) polynomial is given by</p>
+         \[A = \frac{60!}{(57)!(2)!(1)!} 0.9893^{57}0.0107^{2}(10^{-9})^1\]
+         
+         <p>More information about the method can be found <a href="https://www.sciencedirect.com/science/article/abs/pii/0020738183850530">here</a>.</p>
 
     <!-- FOOTER  -->
     
- 
-        <div class="content">
-            <p><b>IsoTools</b> maintained by <a class="info" href="https://github.com/MacDumi">MacDumi</a></p>
-          </div>
- 
+    </div>
   </div>
-     
+     <footer>
+       <div class="content" style="text-align: right">
+            <p><b>IsoTools</b> maintained by <a href="https://github.com/MacDumi">MacDumi</a></p>
+          </div>
+      </footer>
+       
+
       <script type="text/javascript" src="elements.js"></script>
       <script type="text/javascript" src="js/isotools.js"></script>
       <script type="text/javascript" src="js/plot.js"></script>
