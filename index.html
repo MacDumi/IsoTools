@@ -39,11 +39,11 @@
   <div class="column_left" style="min-width: 220px" >
       <div class="box">
         <div style="padding: 5px">
-            <div style="width: 50%; float:left; padding-right: 2px;">
+            <div style="width: 50%; float:left; padding-right: 2px; font-size: 17px;">
                 Formula
-                <input type="text" id="formula" name="formula" style="width: 100%">
+                <input type="text" id="formula" name="formula" style="width: 100%" value="PbCl">
             </div>
-            <div style="width: 50%; float:left; padding-left: 2px;">
+            <div style="width: 50%; float:left; padding-left: 2px; font-size: 17px;">
                 Height
                 <input type="number" id="height" name="height", min="1", max="100" style="width: 100%">
             </div>
@@ -58,7 +58,7 @@
         </div>
       </div>   
       <div class="box" >
-          <div style="padding-left: 5px; padding-top: 5px">Currently displaying</div>
+          <div style="padding-left: 5px; padding-top: 5px; font-size: 17px;">Currently displaying</div>
           <select id="currentData" multiple="multiple" style="margin: 5px">
               <option value='Sample'>Sample Data</option>
           </select>
@@ -66,14 +66,14 @@
               <img src="images/remove.png" style="width: 100%;"> 
           </button>
       </div> 
-      <div class="box">
-          <div style="padding-left: 5px; padding-top: 10px; float: left;">
+      <div class="box" style="width: 100%">
+          <div style="padding-left: 5px; padding-top: 10px; float: left; font-size: 17px; width: 35%">
                Download: 
           </div>
-        <div style=" padding-top: 5px;">
-         <a id="saveData" download="IsotopicDistribution.json" href="" style=" text-align: right;"><img src="images/json.png" style="width: 21%; background-color: transparent; border: none; padding: 4px;"></a>
-         <a id="saveImage" download="IsotopicDistribution.jpg" href="" style=" text-align: right;"><img src="images/jpg.png" style="width: 21%; background-color: transparent; border: none; padding: 4px;"></a>
-            </div>
+        <div style=" padding-top: 5px;" align="center">
+         <a id="saveData" download="IsotopicDistribution.json" href="" ><img src="images/json.png" style="width: 20%; background-color: transparent; border: none; padding: 4px;"></a>
+         <a id="saveImage" download="IsotopicDistribution.jpg" href="" ><img src="images/jpg.png" style="width: 20%; background-color: transparent; border: none; padding: 4px;"></a>
+        </div>
       </div>
      
 
@@ -89,10 +89,10 @@
 <div class="info" style="height: 100%">
      <div class="content" style="padding-top: 15px; padding-left: 10px">
          <h2>Overview</h2>
-         <p>This program can calculate the isotopic distribution of chemical species. It can also calculate and plot the resulting isotopic pattern of complex chemical mixture containing multiple compounds in different proportions. This feature can be used while interpetting mass spectrometric data.</p>
+         <p>This program can calculate the isotopic distribution of chemical species. It can also calculate and plot the resulting isotopic pattern of a complex chemical mixture containing multiple compounds in different proportions. This feature can be used while interpeting mass spectrometric data.</p>
         
          <h2>Instructions</h2>
-         <p>To plot the isotopic distribution of a molecule/atom introduce it's chemical formula and press the <b>Add</b> button. You also have the option of changing the heigh of the resulting spectrum (default value: 100). The plot can be cleared by pressing the <b>Clear</b> button.</p>
+         <p>To plot the isotopic distribution of a molecule/atom introduce it's chemical formula and press the <b>Add</b> button. You can also change the heigh of the resulting spectrum (default value is 100). The plot can be cleared by pressing the <b>Clear</b> button.</p>
          
         <p>Example Chemical formulas:</p>
          <ul style="list-style: none">
@@ -102,7 +102,7 @@
             <li>\(C\,60\)</li>
          </ul>
         
-         <p>You can add as many chemical species as you want, while changing the height property for each one, and thus changing the amount of each compound in the mmixture. The <i>Cumulative</i> line on the plot shows the isotopic distribution of the complex mixtrue. Any compound can be removed from the mixture by first selecting it in the list of displayed species and then pressing the <b>Remove selected</b> button.</p>
+         <p>You can add as many chemical species as you want, while also changing the height property for each one, effectively changing the amount of each compound in the mixture. The <i>Cumulative</i> line on the plot shows the isotopic distribution of the resulting mixture. Any compound can be removed from the mixture by first selecting it in the list of displayed species and then pressing the <b>Remove selected</b> button.</p>
          
          <figure style="text-align: center;">
             <img src="images/screenshot.png" alt="Example spectrum" style="width:70%; ">
@@ -111,11 +111,11 @@
         <p>The obtained isotopic distribution can be exported as either an image or a text file.</p>
          
          <h1>Theory</h1>
-         <p>Most elements occur in nature as a mixture of isotopes. Isotopes are atom species of the same chemical element that have different masses. They have the same number of protons and electrons, but a different number of neutrons. For instance, \(C\) has three isotopes: \(^{12}C\) (mass: 12.(exact) Da, abundance: 98.93(8)%), \(^{13}C\) (mass: 13.003355 Da, abundance: 1.07(8)%), and \(^{14}C\) (mass: 14.003241 Da, abundance: 1ppt). The presence of multiple isotopes for the elemnts of a larger molecule gives rise to a complex and unique isotopic distribution that can be used to identify the molecule. Moreover, since the abundance of isotopes in spce is slightly different, the isotopic distribution can be used to identify chemical species that have an extraterestrial origin.</p>
-         <p>The program is based on the binomial theorem for the calculation of the isotopic distributions. The isotopic distribution for a given molecule is described by the following product of polynomials: </p>
+         <p>Most elements occur in nature as a mixture of isotopes. Isotopes are atom species of the same chemical element that have different masses. They have the same number of protons and electrons, but a different number of neutrons. For instance, \(C\) has three isotopes: \(^{12}C\) (mass: 12.(exact) Da, abundance: 98.93(8)%), \(^{13}C\) (mass: 13.003355 Da, abundance: 1.07(8)%), and \(^{14}C\) (mass: 14.003241 Da, abundance: 1ppt). The presence of multiple isotopes for elemnts of a larger molecule gives rise to a complex and unique isotopic distribution that can be used to identify the molecule. Moreover, since the abundance of isotopes in space is slightly different from the one on Earth, the isotopic distribution can be used to identify chemical species that have extraterrestrial origin.</p>
+         <p>The program is based on the binomial theorem for the calculation of the isotopic distributions. For a given molecule, the distribution is described by the following product of polynomials: </p>
          \[(a_1+a_2+a_3+...)^m(b_1+b_2+b_3+...)^n(c_1+c_2+c_3+...)^o...\]
          
-         <p>where \(a_1\), \(a_3\), \(a_3\), etc., \(b_1\), \(b_3\), \(b_3\), etc., and \(c_1\), \(c_3\), \(c_3\), etc., represent the individual isotopes of the elements, and the exponents <i>m</i>, <i>n</i>, <i>o</i>, etc. are the number of atoms of each element present in the molecule. The terms which result from the expansion of each polynomial can be used to describe the isotopic contributions, exact masses, and absolute abundances. The absolute abundances for each term can be derived with the following combinational equation</p>
+         <p>where \(a_1\), \(a_3\), \(a_3\), etc., \(b_1\), \(b_3\), \(b_3\), etc., and \(c_1\), \(c_3\), \(c_3\), etc., represent the individual isotopes of the elements, and the exponents <i>m</i>, <i>n</i>, <i>o</i>, etc. are the number of atoms of each element present in the molecule. The terms which result from the expansion of each polynomial can be used to describe the isotopic contributions, exact masses, and absolute abundances. The absolute abundances for each term can be derived from the following combinational equation</p>
          \[A = \frac{n!}{(a)!(b)!(c)!...} (r_1)^a(r_2)^b(r_3)^c...\]
          
          <p>where <i>n</i> is the number of atoms of the element, \(r_1\), \(r_2\), \(r_3\), etc., are the abundances of each isotope and <i>a</i>, <i>b</i>, <i>c</i>, etc., are the number distribution of the atoms in a given permutation. For example, the abundance of the \(^{12}C_{57}\)\(^{13}C_{2}\)\(^{14}C_{1}\) term in the \((^{12}C+\)\(^{13}C+\)\(^{14}C)\) polynomial is given by</p>
